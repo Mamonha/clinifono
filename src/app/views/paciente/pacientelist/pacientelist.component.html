@@ -1,0 +1,64 @@
+<c-row>
+    <c-col xs="12">
+    </c-col>
+    <c-col xs="12" lg="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          Listagem de pacientes
+        </c-card-header>
+        <c-card-body>
+          <div class="text-end mb-2">
+            <button type="button" class="btn btn-primary btn-rounded" (click)="new()">
+              <svg [cIcon]="icons.cilUserPlus" size="xl" title="List Icon"></svg>
+            </button>
+          </div>
+          <div class="table-responsive"> 
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Data Nascimento</th>
+                  <th>Telefone</th>
+                  <th>Endereco</th>
+                  <th class="text-center">Opções</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let paciente of lista; let i = index">
+                  <td>{{ paciente.nome }}</td>
+                  <td>{{ paciente.cpf }}</td>
+                  <td>{{ paciente.dataDeNascimento | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ paciente.telefone }}</td>
+                  <td>{{ paciente.endereco.nomeRua || 'Endereço não informado' }}</td>
+                  <td class="text-center"> 
+                    <button cButton color="success" class="me-2" (click)="update(paciente)" >
+                      <svg [cIcon]="icons.cilPenAlt" size="xl" title="List Icon"></svg>
+                    </button>
+                    <button cButton color="danger" (click)="delete(paciente.id)">
+                      <svg [cIcon]="icons.cilTrash" size="xl" title="List Icon"></svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+
+<!-- Modal do CoreUI-->
+ <c-modal [visible]="modalVisible" (visibleChange)="modalVisible = $event" (closed)="closeModal()">
+    <c-modal-header>
+      <h5 class="modal-title">Cadastro</h5>
+      <button type="button" class="btn-close" (click)="closeModal()"></button>
+    </c-modal-header>
+    <c-modal-body>
+        <app-pacientedetails [paciente]="pacienteEdit" (retorno)="retornoDetalhe($event)"></app-pacientedetails>
+    </c-modal-body>
+    <c-modal-footer>
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Fechar</button>
+    </c-modal-footer>
+  </c-modal>
+ 

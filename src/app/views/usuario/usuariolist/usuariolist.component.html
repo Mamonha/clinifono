@@ -1,0 +1,58 @@
+
+<c-row>
+    <c-col xs="12">
+    </c-col>
+    <c-col xs="12" lg="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          Listagem de Usuarios
+        </c-card-header>
+        <c-card-body>
+          <div class="text-end mb-2">
+          </div>
+          <div class="table-responsive"> 
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th class="text-center">Opções</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let usuario of lista; let i = index">
+                  <td>{{ usuario.nome }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.telefone }}</td>
+                  <td class="text-center"> 
+                    <button cButton color="success" class="me-2" (click)="update(usuario)" >
+                      <svg [cIcon]="icons.cilPenAlt" size="xl" title="List Icon"></svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+
+
+  <c-modal 
+  [visible]="modalVisible" 
+  (visibleChange)="handleVisibleChange($event)"
+  (closed)="closeModal()"
+>
+  <c-modal-header>
+    <h5 class="modal-title">Atualizar Dados</h5>
+    <button type="button" class="btn-close" (click)="closeModal()"></button>
+  </c-modal-header>
+  <c-modal-body>
+    <app-usuariodetails [usuario]="usuarioEdit" (retorno)="retornoDetalhe($event)"></app-usuariodetails>
+  </c-modal-body>
+  <c-modal-footer>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Fechar</button>
+  </c-modal-footer>
+</c-modal>

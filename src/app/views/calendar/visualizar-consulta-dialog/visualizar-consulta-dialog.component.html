@@ -1,0 +1,35 @@
+<mat-card>
+  <h2>Detalhes da Consulta</h2>
+  <mat-divider></mat-divider>
+  <div class="info-item">
+    <mat-icon>description</mat-icon>
+    <p><strong>Descrição:</strong> {{ consulta.descricao }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>event</mat-icon>
+    <p><strong>Data:</strong> {{ consulta.dataAgendamento | date:'dd/MM/yyyy' }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>schedule</mat-icon>
+    <p><strong>Hora de Início:</strong> {{ consulta.horaDeInicio }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>schedule</mat-icon>
+    <p><strong>Hora do Fim:</strong> {{ consulta.horaDoFim }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>person</mat-icon>
+    <p><strong>Paciente:</strong> {{ consulta.paciente.nome }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>person</mat-icon>
+    <p><strong>Usuário:</strong> {{ consulta.usuario.nome }}</p>
+  </div>
+  <div class="info-item">
+    <mat-icon>info</mat-icon>
+    <p><strong>Status:</strong> {{ consulta.status }}</p>
+  </div>
+  <div class="buttons">
+    <button mat-button (click)="dialogRef.close()">Fechar</button>
+  </div>
+</mat-card>

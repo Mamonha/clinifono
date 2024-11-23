@@ -1,0 +1,70 @@
+<mat-card>
+    <h2>Nova Consulta</h2>
+    <form [formGroup]="consultaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="descricao" required>
+        <mat-error *ngIf="consultaForm.get('descricao')?.hasError('required')">
+          A descrição é obrigatória
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Agendamento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data_agendamento" required>
+        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="consultaForm.get('data_agendamento')?.hasError('required')">
+          A data é obrigatória
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Hora de Início</mat-label>
+        <input matInput type="time" formControlName="hora_de_inicio" required>
+        <mat-error *ngIf="consultaForm.get('hora_de_inicio')?.hasError('required')">
+          A hora de início é obrigatória
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Hora do Fim</mat-label>
+        <input matInput type="time" formControlName="hora_do_fim" required>
+        <mat-error *ngIf="consultaForm.get('hora_do_fim')?.hasError('required')">
+          A hora do fim é obrigatória
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Paciente</mat-label>
+        <mat-select formControlName="paciente_id" required>
+          <mat-option *ngFor="let paciente of pacientes" [value]="paciente.id">
+            {{ paciente.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="consultaForm.get('paciente_id')?.hasError('required')">
+          O paciente é obrigatório
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Usuário</mat-label>
+        <mat-select formControlName="usuario_id" required>
+          <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
+            {{ usuario.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="consultaForm.get('usuario_id')?.hasError('required')">
+          O usuário é obrigatório
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="buttons">
+        <button mat-button (click)="onCancel()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="consultaForm.invalid">
+          <mat-icon>save</mat-icon> Salvar
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  

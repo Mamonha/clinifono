@@ -1,0 +1,39 @@
+h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .form-field {
+    width: 100%;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  
+    button + button {
+      margin-left: 10px;
+    }
+  }
+  
+  mat-card {
+    padding: 20px;
+  }
+  
+  @media (min-width: 600px) {
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+  
+      mat-form-field {
+        width: 100%;
+      }
+  
+      .buttons {
+        grid-column: span 2;
+      }
+    }
+  }
+  

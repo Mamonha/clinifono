@@ -1,0 +1,57 @@
+<c-row>
+    <c-col xs="12">
+    </c-col>
+    <c-col xs="12" lg="12">
+      <c-card class="mb-4">
+        <c-card-header>
+            Cadastro de Usuário
+        </c-card-header>
+        <c-card-body>
+            <form (ngSubmit)="save()" #usuarioForm="ngForm">
+                <div class="mb-3">
+                  <label for="nome" class="form-label">Nome</label>
+                  <input type="text" id="nome" class="form-control" [(ngModel)]="usuariodto.nome" name="nome" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" class="form-control" [(ngModel)]="usuariodto.email" name="email" required />
+                </div>
+              
+                <div class="mb-3">
+                  <label for="telefone" class="form-label">Telefone</label>
+                  <input type="text" id="telefone" class="form-control" [(ngModel)]="usuariodto.telefone" name="telefone"  required (keyup)="formatarTelefone()" placeholder="Ex: +55 11 98765-4321" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="senha" class="form-label">Senha</label>
+                  <div class="input-group">
+                    <input
+                      [type]="senhaVisivel ? 'text' : 'password'"
+                      id="senha"
+                      class="form-control"
+                      [(ngModel)]="usuariodto.senha"
+                      name="senha"
+                      required
+                    />
+                    <button 
+                      type="button" 
+                      class="btn btn-outline-secondary input-group-text" 
+                      (click)="toggleSenhaVisivel()"
+                    >
+                      {{ senhaVisivel ? 'Hide' : 'Show' }}
+                    </button>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-rounded" [disabled]="usuarioForm.invalid">
+                  Salvar
+                </button>
+                <div *ngIf="usuarioForm.invalid" class="text-danger mt-2">
+                  Por favor, preencha todos os campos obrigatórios.
+                </div>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+</c-row>

@@ -1,0 +1,57 @@
+<c-row class="g-4">
+  <c-col sm="6" xl="5">
+    <c-widget-stat-a
+      color="primary"
+      [title]="'Total de Pacientes'"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        {{ totalPacientes }}
+        <span class="fw-normal" style="font-size: 12px;">
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[1]" [options]="options[1]" class="mt-3 mx-3" height="70" [type]="'line'"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="5">
+    <c-widget-stat-a
+      [title]="'Total de Consultas'"
+      color="danger"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span> {{ totalConsultas }}</span>
+        <span class="fw-normal" style="font-size: 12px;">
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[3]" [options]="options[3]" class="mt-3 mx-3" height="70" type="bar"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="3" xl="2">
+    <c-widget-stat-a
+      [title]="'Saldo WhatsGW'"
+      color="success"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span> {{ balance }} R$</span>
+        <span class="fw-normal" style="font-size: 12px;">
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+        </c-dropdown>
+      </ng-template>
+
+    </c-widget-stat-a>
+  </c-col>
+</c-row>

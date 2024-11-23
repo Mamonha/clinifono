@@ -1,0 +1,38 @@
+<h1 class="text-center mb-2">Próximos Agendamentos</h1>
+<table
+  [hover]="true"
+  [responsive]="true"
+  [striped]="true"
+  align="middle"
+  cTable
+  class="mb-0 border"
+>
+  <thead class="text-nowrap text-truncate">
+    <tr>
+      <th class="bg-body-tertiary text-center">ID</th>
+      <th class="bg-body-terciário">Paciente</th>
+      <th class="bg-body-terciário text-center">Data Agendamento</th>
+      <th class="bg-body-terciário text-center">Hora Início</th>
+      <th class="bg-body-terciário text-center">Hora Fim</th>
+      <th class="bg-body-terciário text-center">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track user.paciente.nome; let i = $index) {
+    <tr>
+      <td class="text-center">{{ user.id }}</td>
+      <td>{{ user.paciente.nome }}</td> 
+      <td class="text-center">{{ user.dataAgendamento | date:'dd-MM-yyyy' }}</td>
+      <td class="text-center">{{ user.horaDeInicio }}</td>
+      <td class="text-center">{{ user.horaDoFim }}</td>
+      <td class="text-center">
+        <span [ngClass]="{
+          'text-success': user.status === 'CONFIRMED',
+          'text-warning': user.status === 'PENDING' || user.status === null,
+          'text-danger': user.status === 'CANCELED'
+        }">{{ user.status ? user.status : 'PENDING'}}</span>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

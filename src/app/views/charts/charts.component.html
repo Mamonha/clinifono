@@ -1,0 +1,50 @@
+<c-row>
+  <c-col xs="12">
+  </c-col>
+  <c-col xs="12" lg="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        Listagem de pacientes
+      </c-card-header>
+      <c-card-body>
+        <div class="text-end mb-2">
+          <button type="button" class="btn btn-primary btn-rounded">
+            <svg [cIcon]="icons.cilUserPlus" size="xl" title="List Icon"></svg>
+          </button>
+        </div>
+        <div class="table-responsive"> 
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data Nascimento</th>
+                <th>Telefone</th>
+                <th>Endereco</th>
+                <th class="text-center">Opções</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>mamonha</td>
+                <td>111111111</td>
+                <td>03-01-1997</td>
+                <td>4599999999999</td>
+                <td> rua exemplo</td>
+                <td class="text-center"> 
+                  <button cButton color="success" class="me-2" >
+                    <svg [cIcon]="icons.cilPenAlt" size="xl" title="List Icon"></svg>
+                  </button>
+                  <button cButton color="danger">
+                    <svg [cIcon]="icons.cilTrash" size="xl" title="List Icon"></svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- Fim da div responsiva -->
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
