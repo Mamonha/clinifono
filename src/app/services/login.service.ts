@@ -10,7 +10,7 @@ import { TokenResponse } from '../models/token-response';
 export class LoginService {
 
   private http = inject(HttpClient);
-  private API = 'http://localhost:8080/api/login';
+  private API = 'http://4.228.61.72:8081/api/login';
 
   login(loginData: Logindto): Observable<TokenResponse> {
     return this.http.post<TokenResponse>(this.API, loginData);

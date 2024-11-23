@@ -74,7 +74,7 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   }
 
   saldogw() {
-    this.http.get<{ balance: number }>("http://localhost:8000/api/saldo").subscribe({
+    this.http.get<{ balance: number }>("http://4.228.61.72:8081/api/saldo").subscribe({
       next: (response) => {
         console.log('Saldo:', response.balance);
         this.balance = response.balance; // Se você tiver uma propriedade 'balance' na classe

@@ -10,7 +10,7 @@ export class EnderecoService {
 
   http = inject(HttpClient);
 
-  API = "https://localhost:8080/api/enderecos";
+  API = "http://4.228.61.72:8081/api/enderecos";
 
   
   constructor() { }
