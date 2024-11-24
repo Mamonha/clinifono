@@ -12,6 +12,7 @@ export class LoginService {
   private http = inject(HttpClient);
   private API = 'https://andersoncsilva.tech/api/login';
 
+  
   login(loginData: Logindto): Observable<TokenResponse> {
     return this.http.post<TokenResponse>(this.API, loginData);
   }
