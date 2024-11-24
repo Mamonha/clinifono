@@ -11,7 +11,7 @@ export class ConsultaService {
 
   http = inject(HttpClient);
 
-  API = "http://4.228.61.72:8081/api/consulta";
+  API = "https://andersoncsilva.tech/api/consulta";
 
   
   constructor() { }

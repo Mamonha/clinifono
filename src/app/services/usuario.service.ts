@@ -15,7 +15,7 @@ export class UsuarioService {
   
   http = inject(HttpClient);
 
-  API = "http://4.228.61.72:8081/api/usuarios";
+  API = "https://andersoncsilva.tech/api/usuarios";
 
   constructor() {}
 
