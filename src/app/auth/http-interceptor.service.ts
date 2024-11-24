@@ -6,10 +6,8 @@ import { catchError, throwError } from 'rxjs';
 export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   const router = inject(Router);
 
-  // Recuperando o token diretamente como string
   const token = localStorage.getItem('token'); 
 
-  // Se o token existir e a URL não for a de login, adicionar o token ao cabeçalho
   if (token && !router.url.includes('/login')) {
     request = request.clone({
       setHeaders: {
@@ -17,8 +15,7 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
       },
     });
   }
-
-  // Executando a requisição e tratando os erros
+  
   return next(request).pipe(
     catchError((err: any) => {
       if (err instanceof HttpErrorResponse) {
