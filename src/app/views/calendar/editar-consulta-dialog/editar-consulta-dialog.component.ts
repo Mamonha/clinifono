@@ -48,6 +48,11 @@ export class EditarConsultaDialogComponent implements OnInit {
   usuarios: Usuario[] = [];
   isCancelled: boolean = false;
   statusOptions: string[] = ['PENDING', 'CONFIRMED', 'CANCELLED'];
+  statusMapping: { [key: string]: string } = {
+    PENDING: 'Pendente',
+    CONFIRMED: 'Confirmado',
+    CANCELLED: 'Cancelado',
+  };  
   constructor(
     public dialogRef: MatDialogRef<EditarConsultaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
