@@ -1,7 +1,7 @@
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { AuthService} from "../../../auth/authService"
 import {
   AvatarComponent,
   BadgeComponent,
@@ -27,6 +27,7 @@ import {
 } from '@coreui/angular';
 
 import { IconDirective } from '@coreui/icons-angular';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-default-header',
@@ -38,6 +39,8 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
+
+  authservice = inject(LoginService);
 
   readonly colorModes = [
     { name: 'light', text: 'Light', icon: 'cilSun' },
@@ -56,6 +59,9 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   sidebarId = input('sidebar1');
 
+  logout() {
+    this.authservice.removerToken();
+  }
   public newMessages = [
     {
       id: 0,
