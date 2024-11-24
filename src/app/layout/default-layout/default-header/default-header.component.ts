@@ -1,6 +1,6 @@
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 import {
   AvatarComponent,
@@ -41,7 +41,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
   readonly colorMode = this.#colorModeService.colorMode;
 
   authservice = inject(LoginService);
-
+  router = inject(Router);
   readonly colorModes = [
     { name: 'light', text: 'Light', icon: 'cilSun' },
     { name: 'dark', text: 'Dark', icon: 'cilMoon' },
@@ -61,7 +61,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   logout() {
     this.authservice.removerToken();
+    this.router.navigate(['/login']);
   }
-
 
 }
