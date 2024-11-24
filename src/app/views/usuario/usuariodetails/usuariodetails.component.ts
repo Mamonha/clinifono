@@ -45,10 +45,10 @@ export class UsuariodetailsComponent {
   }
 
   formatarTelefone() {
-    if (this.usuario && this.usuario.telefone) {
-      this.usuario.telefone = this.usuario.telefone.replace(/\D/g, '');
-      this.usuario.telefone = this.usuario.telefone.replace(/^(\d{2})(\d)/g, '+$1 $2');
-      this.usuario.telefone = this.usuario.telefone.replace(/(\d{2})(\d{5})(\d{4})/, '$1 $2-$3');
+    if (this.usuariodto && this.usuariodto.telefone) {
+      this.usuariodto.telefone = this.usuariodto.telefone.replace(/\D/g, '');
+      this.usuariodto.telefone = this.usuariodto.telefone.replace(/^(\d{2})(\d)/g, '+$1 $2');
+      this.usuariodto.telefone = this.usuariodto.telefone.replace(/(\d{2})(\d{5})(\d{4})/, '$1 $2-$3');
     }
   }
 
