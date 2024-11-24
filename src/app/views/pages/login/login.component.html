@@ -7,7 +7,7 @@
             <c-card-body>
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <h1>Login</h1>
-                <p class="text-body-secondary">Acesse sua conta!</p>
+                <p class="text-body-secondary">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
@@ -15,7 +15,7 @@
                   <input
                     cFormControl
                     formControlName="email"
-                    placeholder="Email"
+                    placeholder="Username"
                     type="email"
                   />
                 </c-input-group>
@@ -26,14 +26,14 @@
                   <input
                     cFormControl
                     formControlName="password"
-                    placeholder="Senha"
+                    placeholder="Password"
                     type="password"
                   />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
                     <button cButton class="px-4" [ngStyle]="{'background-color': '#23314F' }" type="submit">
-                      Acessar
+                      Login
                     </button>
                   </c-col>
                 </c-row>

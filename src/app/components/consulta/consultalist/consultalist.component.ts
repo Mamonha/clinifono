@@ -28,15 +28,6 @@ user: any;
     this.loadAgendamentos();
   }
 
-  getStatusInPortuguese(status: string): string {
-    const statusMap: { [key: string]: string } = {
-      CONFIRMED: 'CONFIRMADO',
-      PENDING: 'PENDENTE',
-      CANCELLED: 'CANCELADO'
-    };
-    return statusMap[status] || 'PENDENTE';
-  }
-
   loadAgendamentos() {
     this.consultaService.findAll().subscribe({
       next: (data) => {

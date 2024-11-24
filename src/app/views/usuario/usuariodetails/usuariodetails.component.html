@@ -20,7 +20,7 @@
               
                 <div class="mb-3">
                   <label for="telefone" class="form-label">Telefone</label>
-                  <input type="text" id="telefone" class="form-control" [(ngModel)]="usuariodto.telefone" name="telefone"  required (input)="formatarTelefone()" placeholder="Ex: +55 11 98765-4321" />
+                  <input type="text" id="telefone" class="form-control" [(ngModel)]="usuariodto.telefone" name="telefone"  required (keyup)="formatarTelefone()" placeholder="Ex: +55 11 98765-4321" />
                 </div>
 
                 <div class="mb-3">
