@@ -30,9 +30,7 @@
           'text-success': user.status === 'CONFIRMED',
           'text-warning': user.status === 'PENDING' || user.status === null,
           'text-danger': user.status === 'CANCELED'
-        }">
-          {{ getStatusInPortuguese(user.status) }}
-        </span>
+        }">{{ user.status ? user.status : 'PENDING'}}</span>
       </td>
     </tr>
   }
