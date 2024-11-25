@@ -1,10 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CriarConsultaDialogComponent } from './criar-consulta-dialog/criar-consulta-dialog.component';
 import { EditarConsultaDialogComponent } from './editar-consulta-dialog/editar-consulta-dialog.component';
 import { ConsultaService } from '../../services/consulta.service';
@@ -51,11 +51,11 @@ export class CalendarComponent implements OnInit {
     eventTimeFormat: {
       hour: 'numeric',
       minute: '2-digit',
-      meridiem: true 
+      meridiem: true, 
+    },
     dayCellDidMount: (cellInfo) => {
-      const today = new Date();
-      today.setHours(0,0,0,0);
-      const cellDate = new Date(cellInfo.date);
+      const today = new Date().setHours(0, 0, 0, 0);
+      const cellDate = cellInfo.date.getTime();
 
       if(cellDate < today){
         cellInfo.el.style.backgroundColor = '#ffcccc';
@@ -103,6 +103,7 @@ export class CalendarComponent implements OnInit {
             start: start,
             end: end,
             backgroundColor: color,
+            textColor: 'white',
             extendedProps: {
               consultaData: consulta,
               translatedStatus: translatedStatus,
@@ -145,7 +146,6 @@ export class CalendarComponent implements OnInit {
     const translatedStatus = event.extendedProps.translatedStatus;
     const editDialog = this.dialog.open(EditarConsultaDialogComponent, {
       data: consulta,
-      statusTraduzido: translatedStatus,
     });
 
     editDialog.afterClosed().subscribe((consulta: any) => {
