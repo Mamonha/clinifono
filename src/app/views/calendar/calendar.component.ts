@@ -52,15 +52,6 @@ export class CalendarComponent implements OnInit {
       hour: 'numeric',
       minute: '2-digit',
       meridiem: true 
-    dayCellDidMount: (cellInfo) => {
-      const today = new Date();
-      today.setHours(0,0,0,0);
-      const cellDate = new Date(cellInfo.date);
-
-      if(cellDate < today){
-        cellInfo.el.style.backgroundColor = '#ffcccc';
-        cellInfo.el.style.opacity = '0.6';
-      }
     },
   };
 
@@ -78,34 +69,12 @@ export class CalendarComponent implements OnInit {
           const end = new Date(dataAgendamento);
           end.setHours(horaFimHoras, horaFimMinutos, horaFimSegundos || 0);
 
-          let color = '';
-          let translatedStatus = '';
-          switch (consulta.status) {
-            case 'CONFIRMED':
-              color = 'blue';
-              translatedStatus = 'Confirmada';
-              break;
-            case 'PENDING':
-              color = 'yellow';
-              translatedStatus = 'Pendente';
-              break;
-            case 'CANCELLED':
-              color = 'gray';
-              translatedStatus = 'Cancelada';
-              break;
-            default:
-              color = 'black';
-              translatedStatus = 'Desconhecido';
-              break;
-          }
           return {
             title: consulta.descricao,
             start: start,
             end: end,
-            backgroundColor: color,
             extendedProps: {
               consultaData: consulta,
-              translatedStatus: translatedStatus,
             },
           };
         }),
@@ -142,10 +111,8 @@ export class CalendarComponent implements OnInit {
     const event = info.event;
     const consulta = event.extendedProps.consultaData;
   
-    const translatedStatus = event.extendedProps.translatedStatus;
     const editDialog = this.dialog.open(EditarConsultaDialogComponent, {
       data: consulta,
-      statusTraduzido: translatedStatus,
     });
 
     editDialog.afterClosed().subscribe((consulta: any) => {
