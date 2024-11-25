@@ -102,8 +102,10 @@ export class CalendarComponent implements OnInit {
             title: consulta.descricao,
             start: start,
             end: end,
+            backgroundColor: color,
             extendedProps: {
               consultaData: consulta,
+              translatedStatus: translatedStatus,
             },
           };
         }),
@@ -140,8 +142,10 @@ export class CalendarComponent implements OnInit {
     const event = info.event;
     const consulta = event.extendedProps.consultaData;
   
+    const translatedStatus = event.extendedProps.translatedStatus;
     const editDialog = this.dialog.open(EditarConsultaDialogComponent, {
       data: consulta,
+      statusTraduzido: translatedStatus,
     });
 
     editDialog.afterClosed().subscribe((consulta: any) => {
