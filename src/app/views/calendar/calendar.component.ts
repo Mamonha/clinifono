@@ -78,6 +78,26 @@ export class CalendarComponent implements OnInit {
           const end = new Date(dataAgendamento);
           end.setHours(horaFimHoras, horaFimMinutos, horaFimSegundos || 0);
 
+          let color = '';
+          let translatedStatus = '';
+          switch (consulta.status) {
+            case 'CONFIRMED':
+              color = 'blue';
+              translatedStatus = 'Confirmada';
+              break;
+            case 'PENDING':
+              color = 'yellow';
+              translatedStatus = 'Pendente';
+              break;
+            case 'CANCELLED':
+              color = 'gray';
+              translatedStatus = 'Cancelada';
+              break;
+            default:
+              color = 'black';
+              translatedStatus = 'Desconhecido';
+              break;
+          }
           return {
             title: consulta.descricao,
             start: start,
