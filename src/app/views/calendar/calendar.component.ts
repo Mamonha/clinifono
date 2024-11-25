@@ -25,7 +25,6 @@ import { DocsCalloutComponent } from '@docs-components/public-api';
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
   consultaService = inject(ConsultaService);
   dialog = inject(MatDialog);
 
@@ -147,7 +146,6 @@ export class CalendarComponent implements OnInit {
     const translatedStatus = event.extendedProps.translatedStatus;
     const editDialog = this.dialog.open(EditarConsultaDialogComponent, {
       data: consulta,
-      statusTraduzido: translatedStatus,
     });
 
     editDialog.afterClosed().subscribe((consulta: any) => {

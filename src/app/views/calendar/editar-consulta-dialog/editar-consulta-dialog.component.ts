@@ -132,4 +132,10 @@ export class EditarConsultaDialogComponent implements OnInit {
     this.isCancelled = true; 
     this.dialogRef.close(); 
   }
+
+  statusTranslations: { [key: string]: string } = {
+  CONFIRMED: 'Confirmada',
+  PENDING: 'Pendente',
+  CANCELLED: 'Cancelada',
+};
 }
