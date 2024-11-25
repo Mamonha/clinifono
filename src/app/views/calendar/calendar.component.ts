@@ -52,6 +52,15 @@ export class CalendarComponent implements OnInit {
       hour: 'numeric',
       minute: '2-digit',
       meridiem: true 
+    dayCellDidMount: (cellInfo) => {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const cellDate = new Date(cellInfo.date);
+
+      if(cellDate < today){
+        cellInfo.el.style.backgroundColor = '#ffcccc';
+        cellInfo.el.style.opacity = '0.6';
+      }
     },
   };
 
