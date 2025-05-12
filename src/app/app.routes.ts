@@ -67,6 +67,7 @@ export const routes: Routes = [
   {
     path: '500',
     loadComponent: () => import('./views/pages/page500/page500.component').then(m => m.Page500Component),
+    canActivate: [AuthGuard],
     data: {
       title: 'Page 500'
     }
