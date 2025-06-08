@@ -11,7 +11,7 @@ export class ConsultaService {
 
   http = inject(HttpClient);
 
-  API = "https://andersoncsilva.tech/api/consulta";
+  API = "/clinifono-0.0.1-SNAPSHOT/api/consulta";
 
   
   constructor() { }

@@ -10,7 +10,7 @@ import { TokenResponse } from '../models/token-response';
 export class LoginService {
 
   private http = inject(HttpClient);
-  private API = 'https://andersoncsilva.tech/api/login';
+  private API = '/clinifono-0.0.1-SNAPSHOT/api/login';
 
   
   login(loginData: Logindto): Observable<TokenResponse> {

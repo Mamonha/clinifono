@@ -10,7 +10,7 @@ export class EnderecoService {
 
   http = inject(HttpClient);
 
-  API = "https://andersoncsilva.tech/api/enderecos";
+  API = "/clinifono-0.0.1-SNAPSHOT/api/enderecos";
 
   
   constructor() { }
@@ -28,6 +28,6 @@ export class EnderecoService {
   }
 
   update(endereco: Endereco, id: number): Observable<Endereco>{
-    return this.http.put<Endereco>(this.API + "/upd ate/" + id, endereco, {responseType: 'text' as 'json'});
+    return this.http.put<Endereco>(this.API + "/update/" + id, endereco, {responseType: 'text' as 'json'});
   }
 }
