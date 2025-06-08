@@ -15,7 +15,7 @@ export class UsuarioService {
   
   http = inject(HttpClient);
 
-  API = "/clinifono-0.0.1-SNAPSHOT/api";
+  API = "/clinifono-0.0.1-SNAPSHOT/api/usuarios";
 
   constructor() {}
 
