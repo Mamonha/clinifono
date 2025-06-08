@@ -1,0 +1,31 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx-c1/access.log
+      - /var/log/nginx-c2/access.log
+    fields:
+      service_name: nginx-frontend
+      log_type: access
+    fields_under_root: true
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx-c1/error.log
+      - /var/log/nginx-c2/error.log
+    fields:
+      service_name: nginx-frontend
+      log_type: error
+    fields_under_root: true
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  index: "nginx-logs-%{+yyyy.MM.dd}"
+  pipeline: "nginx_user_agent"
+
+setup.template.name: "nginx-logs"
+setup.template.pattern: "nginx-logs-*"
+setup.ilm.enabled: false
+
+logging.level: info
