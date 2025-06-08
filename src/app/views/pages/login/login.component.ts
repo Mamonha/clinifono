@@ -41,7 +41,7 @@ export class LoginComponent {
       this.loginService.login(loginData).subscribe({
         next: response => {
           if (response) {
-            this.loginService.addToken(response.token);
+            this.loginService.addToken(response.access_token);
             this.router.navigate(['/admin/dashboard']);
           } else {
             alert('Login falhou. Verifique suas credenciais.');
