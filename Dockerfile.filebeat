@@ -1,0 +1,4 @@
+FROM docker.elastic.co/beats/filebeat:8.12.0
+USER root
+RUN chmod go-w /usr/share/filebeat/filebeat.yml
+USER filebeat
