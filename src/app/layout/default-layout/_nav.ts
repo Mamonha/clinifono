@@ -44,6 +44,11 @@ export const navItems: INavData[] = [
         url: '/usuario',
         icon: 'nav-icon-bullet'
       },
+      {
+        name: 'Auditing',
+        url: '/usuario/audit',
+        icon: 'nav-icon-bullet'
+      }
     ]
   },
 ];

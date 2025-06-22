@@ -1,0 +1,57 @@
+<c-row>
+  <c-col xs="12" lg="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        Relatório de Auditoria
+      </c-card-header>
+      <c-card-body>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Buscar por nome, email ou telefone">
+          </div>
+          <div class="col-md-3">
+            <input type="date" [(ngModel)]="dataInicio" class="form-control" placeholder="Data início">
+          </div>
+          <div class="col-md-3">
+            <input type="date" [(ngModel)]="dataFim" class="form-control" placeholder="Data fim">
+          </div>
+          <div class="col-md-2 d-flex gap-2">
+            <button cButton color="primary" (click)="filtrar()">Filtrar</button>
+            <button cButton color="secondary" (click)="limparFiltros()">Limpar</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Tabela</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Data Criação</th>
+                <th>Data Modificação</th>
+                <th>Criado por</th>
+                <th>Modificado por</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of lista">
+                <td>{{ usuario.tabela }}</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email || '-' }}</td>
+                <td>{{ usuario.telefone || '-' }}</td>
+                <td>{{ usuario.dataCriacao | date:'short' }}</td>
+                <td>{{ usuario.dataModificacao | date:'short' }}</td>
+                <td>{{ usuario.criadoPor || '-' }}</td>
+                <td>{{ usuario.modificadoPor || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
