@@ -32,7 +32,14 @@ export const routes: Routes = [{
       data: {
         title: 'Lista de Usuario'
       }
+    },
+    {
+    path: 'audit',
+    loadComponent: () => import('../../views/auditing/auditlist/auditlist.component').then(m => m.AuditlistComponent),
+    data: {
+      title: 'Audit Page'
     }
+  },
   ]
 }
 ];

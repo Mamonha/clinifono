@@ -10,7 +10,7 @@ export class PacienteService  {
 
   http = inject(HttpClient);
 
-  API = "https://andersoncsilva.tech/api/paciente";
+  API = "/clinifono-0.0.1-SNAPSHOT/api/paciente";
 
   
   constructor() { }
